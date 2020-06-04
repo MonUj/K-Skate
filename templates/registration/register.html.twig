@@ -1,0 +1,31 @@
+{% extends 'header.html.twig' %}
+
+{% block body %}
+<u><h2 class="h3 mb-3 font-weight-normal text-center">S'inscrire :</h2></u>
+<div class="d-flex justify-content-center align-items-center container-fluid">
+    {{form(form)}}
+</div>
+{#<div class="d-flex justify-content-center align-items-center container-fluid">
+{{form_start(form)}}
+    <div class="alert alert-danger">
+        {{ form_errors(form)}}
+    </div>
+    <div class="form-group row">
+        <i class="fas fa-user"></i> {{form_label(form.name)}}
+        {{ form_widget(form.name) }}
+    </div>
+    <div class="form-group row">
+        <i class="fas fa-user"></i> {{form_label(form.firstName)}}
+        {{ form_widget(form.firstName) }}
+    </div>
+    <div class="form-group row">
+        <i class="fas fa-at"></i> {{ form_label(form.email)}}
+        {{ form_widget(form.email)}}
+    </div>
+    <div class="form-group row">
+        <i class="fas fa-lock"></i> {{ form_label(form.password)}}
+        {{ form_widget(form.password)}}
+    </div>
+{{ form_end(form)}}
+</div>#}
+{% endblock %}

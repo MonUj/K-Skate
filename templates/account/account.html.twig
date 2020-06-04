@@ -1,0 +1,102 @@
+{% extends 'header.html.twig' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<br>
+<div class="row">
+    <div class="col-sm-8">
+    </div>
+    <div class="col-sm-4">
+        <button class="btn btn-secondary btn-sm text-center" type="button"><a class="text-white" href="#commandes">Mes commandes <i class="fas fa-money-bill-alt"></i></a></button>
+        <button class="btn btn-secondary btn-sm text-center" type="button"><a class="text-white" href="{{ path('my_products')}}">Mes annonces <i class="fas fa-scroll"></i></a></button>
+    </div>
+</div>
+<div class="container" style="margin-left: auto; margin-right: auto;">
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="well well-sm">
+            {#<form class="form-horizontal" action="/monespace" method="post">#}
+              <fieldset>
+                <h3>Vos informations personnelles :</h3>
+                <br>
+                {{ form_start(formUpdateUser) }}
+                <div class="form-group row">
+                    <label class="col-md-3 control-label" for="nom">Nom :</label>
+                  <div class="col-md-9">
+                    {{ form_widget(formUpdateUser.name) }}
+                    {#<input type="nom" class="form-control" value="{{ app.user.name}}" id="nom">#}
+                  </div>
+                </div>
+                <div class="form-group row">
+                   <label class="col-md-3 control-label" for="prenom">Prénom :</label>
+                  <div class="col-md-9">
+                  {{ form_widget(formUpdateUser.firstName) }}
+                    {#<input type="prenom" class="form-control" value="{{ app.user.firstName}}" id="prenom">#}
+                  </div>
+                </div>
+                <div class="form-group row">
+                   <label class="col-md-3 control-label" for="email">Email :</label>
+                  <div class="col-md-9">
+                  {{ form_widget(formUpdateUser.email) }} 
+                  
+                    {#<input type="email" readonly class="form-control" value="{{ app.user.email}}" id="prenom">#}
+                  </div>
+                </div>
+                <div class="form-group row">
+                   <label class="col-md-3 control-label" for="address">Adresse :</label>
+                  <div class="col-md-9">
+                  {{ form_widget(formUpdateUser.address) }}
+                    {#<input type="address" class="form-control" value="{{ app.user.address}}" id="address">#}
+                  </div>
+                </div>
+                <div class="form-group row">
+                   <label class="col-md-3 control-label" for="city">Ville :</label>
+                  <div class="col-md-9">
+                  {{ form_widget(formUpdateUser.city) }}
+                    {#<input type="city"  class="form-control" value="{{ app.user.city}}" id="city">#}
+                  </div>
+                </div>
+                <div class="form-group row">
+                   <label class="col-md-3 control-label" for="phoneNumber">Téléphone :</label>
+                  <div class="col-md-9">
+                  {{ form_widget(formUpdateUser.phoneNumber) }}
+                    {#<input type="phoneNumber"  class="form-control" value="{{ app.user.phoneNumber}}" id="phoneNumber">#}
+                  </div>
+                </div>
+                <div class="form-group row">
+                   <label class="col-md-3 control-label" for="avatar">Avatar :</label>
+                  <div class="col-md-9">
+                  {{ form_widget(formUpdateUser.avatar) }}
+                    {#<input type="file"  class="form-control-file" value="" id="avatar">#}
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12 text-center">
+                        {{ form_widget(formUpdateUser.submit) }}
+                        {#<button type="submit" class="btn btn-outline-secondary">Sauvegarder</button>#}
+                    </div>
+                </div>
+                {{ form_end(formUpdateUser) }}
+              </fieldset>
+            {#</form>#}            
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer font-small bg-dark">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3"><p class="text-white">© 2020 Copyright:
+    <a class="text-white" href="https://julienroyau49.wixsite.com/portfolio"> julienroyau.com</a></p>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+{% endblock %}

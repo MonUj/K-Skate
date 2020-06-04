@@ -1,0 +1,23 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+home:
+    path: /home
+    controller: App\Controller\HomeController::home
+
+header:
+    path: /header
+    controller: App\Controller\HomeController::header
+
+logout:
+    path: /logout
+
+registration:
+    path: /register
+    controller: App\Controller\RegistrationController::registerAction
+
+account:
+    path: /monespace
+    controller: App\Controller\AccountController::index
+

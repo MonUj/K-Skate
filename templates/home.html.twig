@@ -1,0 +1,113 @@
+{% extends 'header.html.twig' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
+<br>
+  <p class="text-center font-italic"><font size="5">
+   Bienvenue sur K-Skate, un site d'achat et de revente de couvre-chefs entre particuliers !
+  </font></p>
+  {% if is_granted('ROLE_USER') %}
+  <div class="mb-3 text-center">
+      Bonjour {{ app.user.firstName }} <i class="far fa-smile"></i> !
+  </div>
+  {% endif %}
+  <form class="form-inline justify-content-center" action="">
+    <input class="form-control mr-sm-2" type="text" placeholder="Rechercher">
+    <button class="btn btn-secondary" type="submit">Rechercher <i class="fas fa-search"></i></button>
+  </form><br>
+  <div class="col text-center">
+  {% if is_granted('ROLE_USER') %}
+  <button class="btn btn-secondary text-center" type="button" data-toggle="modal" data-target="#myModal">Publier une annonce <i class="fas fa-scroll"></i></button>
+  <!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <u><h4 class="modal-title">Publier une Annonce :</h4></u>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        {{form(formAddPro)}}
+      </div>
+
+    </div>
+  </div>
+</div>
+  {% else %}
+  <button class="btn btn-secondary text-center" type="button"><a class="text-white" href="/login">Publier une annonce <i class="fas fa-scroll"></i></a></button>
+  {% endif %}
+  </div>
+  <button class="btn-filtrer" type="button" data-toggle="collapse" data-target="#filter">Filtrer <i class="fas fa-sort"></i></button>
+  <div id="filter" class="collapse">
+  {#<table class="table table-bordered">
+  <tbody>#}
+  <br>
+  <div class="row">
+  <div class="col-sm-8"></div>
+  <div class="col-sm-4">
+    <form class="" action="#">
+      <div class="form-group row">
+        <label class="control-label col-md-5" for"category">Catégorie : </label>
+        <select id="category" class="form-control col-md-5">
+        {% for category in categorys %}
+           <option value="category_{{ loop.index0 }}">{{ category.label }}</option> 
+        {% endfor %}
+        </select>   
+      </div>
+      <div class="form-group">
+        <input type"submit" class="btn btn-sm btn-secondary text-center col-md-12 center-block" value="Filtrer">
+      </div>    
+    </form>
+  </div>
+  </div>
+  {#</tbody>
+  </table>#}
+  </div>
+
+  
+  <div class="row">
+        {% for product in products %}
+            <div class="col-3 mt-3">
+                <div class="border border-dark rounded p-2 clearfix">
+                    <h5>{{ product.label }}</h5>
+                    <h5>{{ product.prix }}€</h5>
+                    <h6>{{ product.marque}}</h6>
+                    <small><a href="#description_{{ loop.index0 }}" data-toggle="collapse">voir la description de l'article</a></small>
+                    <div id="description_{{ loop.index0 }}" class="collapse">
+                    {{ product.description }}
+                    </div>
+                    <img class="img-fluid rounded" src="{{ asset('images/products/' ~ product.filename)}}" alt="Image de {{ product.label }}"> {#{{  vich_uploader_asset(product, 'imageFile') | imagine_filter('product') }}#}
+                    <hr>
+                    <a href="{{ path('cart_add', {'id': product.id }) }}" class="btn btn-outline-secondary float-right">
+                        <i class="fas fa-shopping-cart mr-1"></i>
+                        Ajouter
+                    </a>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+    <br>
+
+<!-- Footer -->
+<footer class="page-footer font-small bg-dark">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3"><p class="text-white">© 2020 Copyright:
+    <a class="text-white" href="https://julienroyau49.wixsite.com/portfolio"> julienroyau.com</a></p>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+{% endblock %}
+

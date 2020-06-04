@@ -1,0 +1,77 @@
+{% extends 'header.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/panier.css') }}">
+<div class="container">
+    <div class="bg-light p-3">
+        <h4><u>Votre panier :</u></h4>
+    </div> 
+    <br>
+    {% if items | length > 0 %}
+    
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Marque</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                
+                    <tr>
+                        <td>{{ item.product.label }} {#(<small><a class="cart/index.html.twig" data-toggle="modal" data-target="#ApercuProduit">aperçu</button></small>)
+                            <div class="modal fade" id="ApercuProduit">
+                                <div class="modal-body">
+                                    <img class="img-fluid rounded" src="{{ asset('images/products/' ~ product.filename)}}" alt="Image de {{ product.label }}">
+                                </div>
+                            </div>#}
+                        </td>
+                        <td>{{ item.product.marque }}</td>
+                        <td>{{ item.product.prix }} €</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.product.prix * item.quantity }} €</td>
+                        <td>
+                            <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-right">Total :</td>
+                    <td><b>{{ total }} €</b></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    {% else %}
+       <p>Surprise, c'est vide !</p>
+    {% endif %}
+{% if is_granted('ROLE_USER') %}
+
+{% else %}
+<button class="btn btn-secondary text-center float-right" type="button"><a class="text-white" href="/login">Commander et payer <i class="fas fa-euro-sign"></i></a></button>
+{% endif %}
+</div>
+
+
+<!-- Footer -->
+<footer class="page-footer font-small bg-dark">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3"><p class="text-white">© 2020 Copyright:
+    <a class="text-white" href="https://julienroyau49.wixsite.com/portfolio"> julienroyau.com</a></p>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+{% endblock %}

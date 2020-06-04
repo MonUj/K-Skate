@@ -1,0 +1,6 @@
+web_profiler:
+    toolbar: true
+    intercept_redirects: false #remettre à false une fois config mail réalisé
+
+framework:
+    profiler: { only_exceptions: false }

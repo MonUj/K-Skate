@@ -1,0 +1,39 @@
+{% extends 'header.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<button class="btn btn-link  text-center" type="button"><a class="text-dark" href="{{ path('app_monespace') }}"><i class="fas fa-arrow-left"></i> Retour</a></button>
+
+<div class="container">
+    <div class="bg-light p-3">
+        <h4><u>Vos annonces :</u></h4>
+    </div> 
+    <br>
+    {% if userproducts | length > 0 %}
+        <table class="table table-borderless table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Nom</th>
+                    <th>Marque</th>
+                    <th>Prix</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for product in userproducts %}
+                <tr>
+                    <td><img class="img-fluid rounded" src="{{ asset('images/products/' ~ product.filename)}}"></td>
+                    <td>{{ product.label }}</td>
+                    <td>{{ product.marque }}</td>
+                    <td>{{ product.prix }}</td>
+                    <td><a href="#" class="btn btn-link btn-sm">Modifier</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% else %}
+       <p>Vous n'avez pas encore poster d'annonces !</p>
+    {% endif %}
+{% endblock %}

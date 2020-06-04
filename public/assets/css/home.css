@@ -1,0 +1,20 @@
+.btn-filtrer {
+    background-color: #fff;
+    border: 1px solid gray;
+    color: gray;
+    padding: 6px 18px;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    float: right;
+    margin-right: 15px;
+    margin-top: -38px;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+.btn-filtrer:hover {
+    background-color: #6c757d; /*color boostrap secondary hex*/
+    color: white;
+}
+
+

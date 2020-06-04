@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>K-Skate</title>
+  <link rel="icon" href={{ asset('K_Skate.ico') }}
+  <meta charset="UTF-8">
+  <script src="https://kit.fontawesome.com/8c0bf8da01.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+
+
+   <!-- A grey horizontal navbar that becomes vertical on small screens -->
+<nav class="navbar navbar-expand-sm bg-dark">
+  <a class="navbar-brand" style="color:white"><img src={{ asset('logo_K-Skate2.jpg') }}> K-Skate</a>
+  
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link border-bottom border-white" href="/home">Accueil <i class="fas fa-home"></i></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link border-bottom border-white" href="{{ path('contact')}}">Info / Contact  <i class="fas fa-envelope"></i></a>
+    </li>
+    {% if is_granted('ROLE_USER') %}
+      <li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
+        <a class="nav-link border-bottom border-white" href="/monespace">Mon espace <i class="far fa-user-circle"></i></a>
+      </li>
+      <li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
+        <a class="nav-link border-bottom border-white" href="{{path('app_logout')}}">Déconnexion <i class="fas fa-sign-out-alt"></i></a>
+      </li>
+      
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link border-bottom border-white" href="/login">Connexion <i class="fas fa-sign-in-alt"></i></a>
+    </li>
+    {% endif %}
+    <li class="nav-item">
+      <a class="nav-link border-bottom border-white" href="{{ path('cart') }}">Panier <i class="fas fa-shopping-cart"></i></a>
+    </li>
+  </ul>
+
+  {% if is_granted('ROLE_USER') %}
+  {% if app.user.avatar %}
+    <img alt="" class="avatar" src="{{ asset('images/avatars/' ~ app.user.avatar)}} ">  {# alt="{{photo de user.firstName}}     {{  vich_uploader_asset(app.user, 'avatarFile') | imagine_filter('carre') }}"#}
+  {% endif %}
+  {% endif %}
+
+</nav>
+</head>
+<body>
+{% block body %}
+{% endblock %}
+</body>
+</html>
