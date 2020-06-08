@@ -2,12 +2,16 @@
 
 Installation pour avoir accès au site :
 
-#1)Clonez le dépot chez vous.
-#2)Modifiez le .env avec vos informations ou avec une bdd sqlite : ligne DATABASE_URL : sqlite:///%kernek.project_dir%/var/data.db
+1)Clonez le dépot chez vous.
+
+2)Modifiez le .env avec vos informations ou avec une bdd sqlite : ligne DATABASE_URL : sqlite:///%kernek.project_dir%/var/data.db
                                          ou avec vos paramètres de votre base de données.
-#3)Executez la base de données : php bin/console doctrine:schema:update --force
-#4)Executez les données : php bin/console doctrine:fixtures:load --no-interaction
-#5)Lancez le serveur interne : php bin/console server:run
+                                         
+3)Executez la base de données : php bin/console doctrine:schema:update --force
+
+4)Executez les données : php bin/console doctrine:fixtures:load --no-interaction
+
+5)Lancez le serveur interne : php bin/console server:run
 
 Vous pouvez à présent testez mon site !
 
