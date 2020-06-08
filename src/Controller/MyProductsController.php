@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 
+
 class MyProductsController extends AbstractController
 {
     /**
@@ -18,6 +19,7 @@ class MyProductsController extends AbstractController
         /*echo '<pre>';
         var_dump($products);
         echo '</pre>';*/
+        
 
         return $this->render('my_products/index.html.twig', [
             'userproducts' => $products,

@@ -83,7 +83,7 @@
                     <div id="description_{{ loop.index0 }}" class="collapse">
                     {{ product.description }}
                     </div>
-                    <img class="img-fluid rounded" src="{{ asset('images/products/' ~ product.filename)}}" alt="Image de {{ product.label }}"> {#{{  vich_uploader_asset(product, 'imageFile') | imagine_filter('product') }}#}
+                    <img class="img-fluid rounded" src="{{ asset('images/products/' ~ product.filename)}}" alt="Image de {{ product.label }}"> {# {{ product.filename }}#}
                     <hr>
                     <a href="{{ path('cart_add', {'id': product.id }) }}" class="btn btn-outline-secondary float-right">
                         <i class="fas fa-shopping-cart mr-1"></i>
